@@ -6,8 +6,8 @@ namespace MyApp
         public static void Main(string[] args)
         {
             int[] arr = { 1, 2, 3, 4, 1, 2 };
-            var sum = SumOfArray(arr);
-            Console.WriteLine($"The sum of the elements in the array is {sum} ");
+            var avg = AverageOfArray(arr);
+            Console.WriteLine($"The average of the elements in the array is {avg} ");
         }
         public static (int a, int b) FindLargestAndSmallest(int[] nums)
         {
@@ -65,6 +65,19 @@ namespace MyApp
                 sum += num;
             }
             return sum;
+        }
+        public static double AverageOfArray(int[] nums)
+        {
+            double sum = 0;
+            double avg = 0, i = 0;
+            foreach (int num in nums)
+            {
+                sum += num;
+                i++;
+            }
+            avg = sum / i;
+            return avg;
+
         }
     }
 }
