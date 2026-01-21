@@ -5,9 +5,9 @@ namespace MyApp
     {
         public static void Main(string[] args)
         {
-            int[] arr = { 1, 2, 3, 4, 1, 2 };
-            var secondLargest = SecondLargest(arr);
-            Console.WriteLine($"The second largest element in the array is {secondLargest} ");
+            int[] arr = { 1, 0, 2, 3, 0, 4, 1, 2 };
+            MoveZeroesToEnd(arr);
+            Console.WriteLine($"Array after moving zeroes to end: {string.Join(", ", arr)}");
         }
         public static (int a, int b) FindLargestAndSmallest(int[] nums)
         {
@@ -26,20 +26,7 @@ namespace MyApp
             }
             return (largest, smallest);
         }
-        public static void ReverseArray(int[] nums)
-        {
-            int left = 0;
-            int right = nums.Length - 1;
-            while (left < right)
-            {
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
-                left++;
-                right--;
-            }
-        }
-            public static int SecondLargest(int[] nums)
+        public static int SecondLargest(int[] nums)
         {
             int largest = int.MinValue;
             int secondLargest = int.MinValue;
@@ -56,6 +43,42 @@ namespace MyApp
                 }
             }
             return secondLargest;
+        }
+        public static int SumOfArray(int[] nums)
+        {
+            int sum = 0;
+            foreach (int num in nums)
+            {
+                sum += num;
+            }
+            return sum;
+        }
+        public static double AverageOfArray(int[] nums)
+        {
+            double sum = 0;
+            double avg = 0, i = 0;
+            foreach (int num in nums)
+            {
+                sum += num;
+                i++;
+            }
+            avg = sum / i;
+            return avg;
+
+        }
+        public static void MoveZeroesToEnd(int[] nums){
+            int count = 0; 
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != 0)
+                {
+                    nums[count++] = nums[i];
+                }
+            }
+            while (count < nums.Length)
+            {
+                nums[count++] = 0;
+            }
         }
     }
 }
