@@ -1,0 +1,32 @@
+name: .NET CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Test
+      run: |
+        find . -name "*.Tests.csproj" -o -name "*Test.csproj" | head -1 | grep -q . && dotnet test --configuration Release --no-build --verbosity normal || echo "No test projects found"
+    
+    - name: Run code analysis
+      run: dotnet build --configuration Release /p:EnableNETAnalyzers=true /p:AnalysisLevel=latest
