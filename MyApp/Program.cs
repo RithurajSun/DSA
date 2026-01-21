@@ -5,9 +5,9 @@ namespace MyApp
     {
         public static void Main(string[] args)
         {
-            int[] arr = { 1, 0, 2, 3, 0, 4, 1, 2 };
-            MoveZeroesToEnd(arr);
-            Console.WriteLine($"Array after moving zeroes to end: {string.Join(", ", arr)}");
+            int[] arr = { 1 ,2 ,3 ,4, 6, 7};
+            int result = MissingNumber(arr);
+            Console.WriteLine($"The missing element in the array is {result}");
         }
         public static (int a, int b) FindLargestAndSmallest(int[] nums)
         {
@@ -79,6 +79,17 @@ namespace MyApp
             {
                 nums[count++] = 0;
             }
+        }
+        public static int MissingNumber(int[] nums)
+        {
+            int n = nums.Length + 1;
+            int expectedSum = n * (n +1)/2;
+            int actualSum = 0;
+            foreach (int num in nums)
+            {
+                actualSum += num;
+            }
+            return expectedSum - actualSum;
         }
     }
 }
