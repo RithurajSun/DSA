@@ -6,8 +6,8 @@ namespace MyApp
         public static void Main(string[] args)
         {
             int[] arr = { 1, 2, 3, 4, 1, 2 };
-            var secondLargest = SecondLargest(arr);
-            Console.WriteLine($"The second largest element in the array is {secondLargest} ");
+            var sum = SumOfArray(arr);
+            Console.WriteLine($"The sum of the elements in the array is {sum} ");
         }
         public static (int a, int b) FindLargestAndSmallest(int[] nums)
         {
@@ -39,7 +39,7 @@ namespace MyApp
                 right--;
             }
         }
-            public static int SecondLargest(int[] nums)
+        public static int SecondLargest(int[] nums)
         {
             int largest = int.MinValue;
             int secondLargest = int.MinValue;
@@ -56,6 +56,15 @@ namespace MyApp
                 }
             }
             return secondLargest;
+        }
+        public static int SumOfArray(int[] nums)
+        {
+            int sum = 0;
+            foreach (int num in nums)
+            {
+                sum += num;
+            }
+            return sum;
         }
     }
 }
