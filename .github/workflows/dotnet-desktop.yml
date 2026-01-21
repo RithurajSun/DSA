@@ -2,9 +2,9 @@ name: .NET CI
 
 on:
   push:
-    branches: [ main, master, develop ]
+    branches: tempo
   pull_request:
-    branches: [ main, master ]
+    branches: tempo
 
 jobs:
   build:
