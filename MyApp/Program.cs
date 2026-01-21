@@ -5,9 +5,9 @@ namespace MyApp
     {
         public static void Main(string[] args)
         {
-            int[] arr = { 1, 2, 3, 4, 1, 2 };
-            var avg = AverageOfArray(arr);
-            Console.WriteLine($"The average of the elements in the array is {avg} ");
+            int[] arr = { 1, 0, 2, 3, 0, 4, 1, 2 };
+            MoveZeroesToEnd(arr);
+            Console.WriteLine($"Array after moving zeroes to end: {string.Join(", ", arr)}");
         }
         public static (int a, int b) FindLargestAndSmallest(int[] nums)
         {
@@ -65,6 +65,20 @@ namespace MyApp
             avg = sum / i;
             return avg;
 
+        }
+        public static void MoveZeroesToEnd(int[] nums){
+            int count = 0; 
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != 0)
+                {
+                    nums[count++] = nums[i];
+                }
+            }
+            while (count < nums.Length)
+            {
+                nums[count++] = 0;
+            }
         }
     }
 }
