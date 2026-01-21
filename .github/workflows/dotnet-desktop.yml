@@ -2,9 +2,9 @@ name: .NET CI
 
 on:
   push:
-    branches: main
+    branches: [ main, master, develop ]
   pull_request:
-    branches: main
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -26,8 +26,7 @@ jobs:
     
     - name: Test
       run: |
-        # Run tests if any test projects exist
         find . -name "*.Tests.csproj" -o -name "*Test.csproj" | head -1 | grep -q . && dotnet test --configuration Release --no-build --verbosity normal || echo "No test projects found"
     
     - name: Run code analysis
-      run: dotnet build --configuration Release /p:EnableNETAnalyzers=true /p:AnalysisLevel=recommended
+      run: dotnet build --configuration Release /p:EnableNETAnalyzers=true /p:AnalysisLevel=latest
