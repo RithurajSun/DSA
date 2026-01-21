@@ -6,8 +6,8 @@ namespace MyApp
         public static void Main(string[] args)
         {
             int[] arr = { 1, 2, 3, 4, 1, 2 };
-            var result = FindLargestAndSmallest(arr);
-            Console.WriteLine($" Largest : {result.a}, Smallest: {result.b}");
+            ReverseArray(arr);
+            Console.WriteLine($" Reversed Array: {string.Join(", ", arr)}S");
         }
         public static (int a, int b) FindLargestAndSmallest(int[] nums)
         {
@@ -25,6 +25,19 @@ namespace MyApp
                 }
             }
             return (largest, smallest);
+        }
+        public static void ReverseArray(int[] nums)
+        {
+            int left = 0;
+            int right = nums.Length - 1;
+            while (left < right)
+            {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right--;
+            }
         }
     }
 }
